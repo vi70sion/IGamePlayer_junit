@@ -1,5 +1,6 @@
 TDD Užduotis
 public interface IGamePlayerManager {
+
 // Metodas registruoti naują žaidėją sistemoje
 void registerPlayer(String playerId, String playerName);
 
