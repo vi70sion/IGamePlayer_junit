@@ -1,13 +1,14 @@
 import org.example.GamePlayerManager;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GamePlayerManagerTest {
 
     static GamePlayerManager manager;
-    @BeforeAll
-    public static void setUp(){
+    @BeforeEach
+    public void setUp(){
         manager = new GamePlayerManager();
     }
 
@@ -51,24 +52,29 @@ public class GamePlayerManagerTest {
 
     //void updatePlayerScore(String playerId, int scoreToAdd);
     @Test
-    public void updatePlayerScore(){
+    public void updatePlayerScoreWith100PointsGetCheckLevelUpTrue(){
         //Setup
         String playerId = "1";
+        int scoreAdd = 100;
+        boolean expBool = true;
         //Execute
+        manager.updatePlayerScore(playerId, scoreAdd);
+        boolean actBool = manager.checkLevelUp(playerId);
         //Assert
-
-
+        assertEquals(expBool, actBool);
     }
 
     //boolean checkLevelUp(String playerId);
     @Test
-    public void checkLevelUp(){
+    public void checkLevelUpIfScoreMoreThan100orEqualReturnTrue(){
         //Setup
         String playerId = "1";
+        int scoreAdd = 100;
+        boolean expBool = true;
         //Execute
+        manager.updatePlayerScore(playerId, scoreAdd);
         //Assert
-
-
+        assertEquals(expBool, manager.checkLevelUp(playerId));
     }
 
     @Test

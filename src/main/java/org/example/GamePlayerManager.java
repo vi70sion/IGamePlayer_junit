@@ -23,11 +23,15 @@ public class GamePlayerManager implements IGamePlayerManager{
 
     @Override
     public void updatePlayerScore(String playerId, int scoreToAdd) {
-
+        if(playerId == null )  return;
+        if(!scoreList.containsKey(playerId)) scoreList.put(playerId, scoreToAdd);
+            else scoreList.put(playerId, scoreList.get(playerId) + scoreToAdd);
     }
 
     @Override
     public boolean checkLevelUp(String playerId) {
+        if(playerId == null ) return false;
+        if(scoreList.get(playerId) >= 100) return true;
         return false;
     }
 
